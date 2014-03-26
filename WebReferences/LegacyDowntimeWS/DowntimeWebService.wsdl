@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:suds="http://www.w3.org/2000/wsdl/suds" xmlns:ns3="http://schemas.microsoft.com/clr/ns/System" xmlns:ns2="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server/Citect.Ampla.Downtime.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns:ns4="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceBase/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns:ns1="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server/Citect.Ampla.Downtime.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" name="DowntimeWebService" targetNamespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server/Citect.Ampla.Downtime.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799">
+      <xsd:complexType name="ArrayOfUnsignedByte">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:unsignedByte[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DowntimeWebService.AboutInput" />
+  <wsdl:message name="DowntimeWebService.AboutOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="DowntimeWebService.GetChartInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="view" type="xsd:string" />
+    <wsdl:part name="filterXml" type="xsd:string" />
+    <wsdl:part name="chartOptionsXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="DowntimeWebService.GetChartOutput">
+    <wsdl:part name="return" type="ns2:ArrayOfUnsignedByte" />
+  </wsdl:message>
+  <wsdl:message name="DowntimeWebService.SplitRecordInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="splitTime" type="xsd:string" />
+    <wsdl:part name="filter" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="DowntimeWebService.SplitRecordOutput" />
+  <wsdl:message name="WebServiceBase.AboutInput" />
+  <wsdl:message name="WebServiceBase.AboutOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="DowntimeWebServicePortType">
+    <wsdl:operation name="About">
+      <wsdl:input name="AboutRequest" message="ns0:DowntimeWebService.AboutInput" />
+      <wsdl:output name="AboutResponse" message="ns0:DowntimeWebService.AboutOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChart" parameterOrder="guid view filterXml chartOptionsXml">
+      <wsdl:input name="GetChartRequest" message="ns0:DowntimeWebService.GetChartInput" />
+      <wsdl:output name="GetChartResponse" message="ns0:DowntimeWebService.GetChartOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="SplitRecord" parameterOrder="guid splitTime filter">
+      <wsdl:input name="SplitRecordRequest" message="ns0:DowntimeWebService.SplitRecordInput" />
+      <wsdl:output name="SplitRecordResponse" message="ns0:DowntimeWebService.SplitRecordOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceBasePortType">
+    <wsdl:operation name="About">
+      <wsdl:input name="AboutRequest" message="ns0:WebServiceBase.AboutInput" />
+      <wsdl:output name="AboutResponse" message="ns0:WebServiceBase.AboutOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DowntimeWebServiceBinding" type="ns0:DowntimeWebServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <suds:class type="ns0:DowntimeWebService" extends="ns1:WebServiceBase" rootType="MarshalByRefObject">
+    </suds:class>
+    <wsdl:operation name="About">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server#About" />
+      <suds:method attributes="public override" />
+      <wsdl:input name="AboutRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="AboutResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChart">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server#GetChart" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetChartRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetChartResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SplitRecord">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server#SplitRecord" />
+      <suds:method attributes="public" />
+      <wsdl:input name="SplitRecordRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="SplitRecordResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.Downtime.Server.DowntimeWebService/Citect.Ampla.Downtime.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceBaseBinding" type="ns0:WebServiceBasePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <suds:class type="ns1:WebServiceBase" rootType="MarshalByRefObject">
+    </suds:class>
+    <wsdl:operation name="About">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceBase/Citect.Ampla.General.Server#About" />
+      <suds:method attributes="public virtual" />
+      <wsdl:input name="AboutRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceBase/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="AboutResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceBase/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DowntimeWebServiceService">
+    <wsdl:port name="DowntimeWebServicePort" binding="ns0:DowntimeWebServiceBinding">
+      <soap:address location="http://localhost:8888/b1/downtime" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceBasePort" binding="ns0:WebServiceBaseBinding">
+      <soap:address location="http://localhost:8888/b1/downtime" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

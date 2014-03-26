@@ -1,0 +1,729 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:suds="http://www.w3.org/2000/wsdl/suds" xmlns:ns3="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceCore/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns:ns2="http://schemas.microsoft.com/clr/ns/System" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns:ns4="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceBase/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns:ns1="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ns0="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" name="WebService" targetNamespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server%2C%20Version%3D4.2.4629.0%2C%20Culture%3Dneutral%2C%20PublicKeyToken%3D13aaee2494f61799">
+      <xsd:complexType name="ArrayOfString">
+        <xsd:complexContent mixed="false">
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute wsdl:arrayType="xsd:string[]" ref="soapenc:arrayType" />
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="WebService.AboutInput" />
+  <wsdl:message name="WebService.AboutOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.AvailableModulesInput" />
+  <wsdl:message name="WebService.AvailableModulesOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetAuditLogInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="filterXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetAuditLogOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetCalendarInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="filterXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetCalendarOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetCauseLocationsInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="reportingPointPath" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetCauseLocationsOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetDataInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="module" type="xsd:string" />
+    <wsdl:part name="view" type="xsd:string" />
+    <wsdl:part name="filterXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetDataOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetData1Input">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="module" type="xsd:string" />
+    <wsdl:part name="view" type="xsd:string" />
+    <wsdl:part name="filterXml" type="xsd:string" />
+    <wsdl:part name="fieldNames" type="ns1:ArrayOfString" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetData1Output">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetData2Input">
+    <wsdl:part name="guid" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetData2Output">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetDataRecordInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="module" type="xsd:string" />
+    <wsdl:part name="view" type="xsd:string" />
+    <wsdl:part name="filterXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetDataRecordOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFieldDescriptorsInput">
+    <wsdl:part name="guid" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFieldDescriptorsOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFieldDescriptors1Input">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="path" type="xsd:string" />
+    <wsdl:part name="module" type="xsd:string" />
+    <wsdl:part name="view" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFieldDescriptors1Output">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFilterInput">
+    <wsdl:part name="guid" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFilterOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFilterDescriptorsInput">
+    <wsdl:part name="guid" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFilterDescriptorsOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFilterDescriptors1Input">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="path" type="xsd:string" />
+    <wsdl:part name="module" type="xsd:string" />
+    <wsdl:part name="view" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetFilterDescriptors1Output">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetHierarchyInput">
+    <wsdl:part name="guid" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetHierarchyOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetHierarchy1Input">
+    <wsdl:part name="sessionToken" type="xsd:string" />
+    <wsdl:part name="context" type="xsd:string" />
+    <wsdl:part name="mode" type="xsd:string" />
+    <wsdl:part name="module" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetHierarchy1Output">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetMatrixInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="path" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetMatrixOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetEmptyDataRecordInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="module" type="xsd:string" />
+    <wsdl:part name="reportingPointPath" type="xsd:string" />
+    <wsdl:part name="view" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetEmptyDataRecordOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetVariablesInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="variablesXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetVariablesOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetViewsInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="path" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.GetViewsOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.LoginInput" />
+  <wsdl:message name="WebService.LoginOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.Login1Input">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.Login1Output">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.LogoutInput">
+    <wsdl:part name="sessionToken" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.LogoutOutput" />
+  <wsdl:message name="WebService.CheckPasswordInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.CheckPasswordOutput">
+    <wsdl:part name="return" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="WebService.RenewLeaseInput">
+    <wsdl:part name="guid" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.RenewLeaseOutput" />
+  <wsdl:message name="WebService.SubmitCalendarInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="calendarXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.SubmitCalendarOutput" />
+  <wsdl:message name="WebService.SubmitDataRecordInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="filterXml" type="xsd:string" />
+    <wsdl:part name="dataXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.SubmitDataRecordOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.SubmitNewDataRecordInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="reportingPointPath" type="xsd:string" />
+    <wsdl:part name="nameValueCollectionXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.SubmitNewDataRecordOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.UpdateVariablesInput">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="variablesXml" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.UpdateVariablesOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.UpdateVariables1Input">
+    <wsdl:part name="guid" type="xsd:string" />
+    <wsdl:part name="variablesXml" type="xsd:string" />
+    <wsdl:part name="force" type="xsd:boolean" />
+  </wsdl:message>
+  <wsdl:message name="WebService.UpdateVariables1Output">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.AuthenticateInput">
+    <wsdl:part name="username" type="xsd:string" />
+    <wsdl:part name="password" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebService.AuthenticateOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebServiceCore.AboutInput" />
+  <wsdl:message name="WebServiceCore.AboutOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:message name="WebServiceBase.AboutInput" />
+  <wsdl:message name="WebServiceBase.AboutOutput">
+    <wsdl:part name="return" type="xsd:string" />
+  </wsdl:message>
+  <wsdl:portType name="WebServicePortType">
+    <wsdl:operation name="About">
+      <wsdl:input name="AboutRequest" message="ns0:WebService.AboutInput" />
+      <wsdl:output name="AboutResponse" message="ns0:WebService.AboutOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="AvailableModules">
+      <wsdl:input name="AvailableModulesRequest" message="ns0:WebService.AvailableModulesInput" />
+      <wsdl:output name="AvailableModulesResponse" message="ns0:WebService.AvailableModulesOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditLog" parameterOrder="guid filterXml">
+      <wsdl:input name="GetAuditLogRequest" message="ns0:WebService.GetAuditLogInput" />
+      <wsdl:output name="GetAuditLogResponse" message="ns0:WebService.GetAuditLogOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendar" parameterOrder="guid filterXml">
+      <wsdl:input name="GetCalendarRequest" message="ns0:WebService.GetCalendarInput" />
+      <wsdl:output name="GetCalendarResponse" message="ns0:WebService.GetCalendarOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCauseLocations" parameterOrder="guid reportingPointPath">
+      <wsdl:input name="GetCauseLocationsRequest" message="ns0:WebService.GetCauseLocationsInput" />
+      <wsdl:output name="GetCauseLocationsResponse" message="ns0:WebService.GetCauseLocationsOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData" parameterOrder="guid module view filterXml">
+      <wsdl:input name="GetDataRequest" message="ns0:WebService.GetDataInput" />
+      <wsdl:output name="GetDataResponse" message="ns0:WebService.GetDataOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData" parameterOrder="guid module view filterXml fieldNames">
+      <wsdl:input name="GetData1Request" message="ns0:WebService.GetData1Input" />
+      <wsdl:output name="GetData1Response" message="ns0:WebService.GetData1Output" />
+    </wsdl:operation>
+    <wsdl:operation name="GetData" parameterOrder="guid">
+      <wsdl:input name="GetData2Request" message="ns0:WebService.GetData2Input" />
+      <wsdl:output name="GetData2Response" message="ns0:WebService.GetData2Output" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataRecord" parameterOrder="guid module view filterXml">
+      <wsdl:input name="GetDataRecordRequest" message="ns0:WebService.GetDataRecordInput" />
+      <wsdl:output name="GetDataRecordResponse" message="ns0:WebService.GetDataRecordOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFieldDescriptors" parameterOrder="guid">
+      <wsdl:input name="GetFieldDescriptorsRequest" message="ns0:WebService.GetFieldDescriptorsInput" />
+      <wsdl:output name="GetFieldDescriptorsResponse" message="ns0:WebService.GetFieldDescriptorsOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFieldDescriptors" parameterOrder="guid path module view">
+      <wsdl:input name="GetFieldDescriptors1Request" message="ns0:WebService.GetFieldDescriptors1Input" />
+      <wsdl:output name="GetFieldDescriptors1Response" message="ns0:WebService.GetFieldDescriptors1Output" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilter" parameterOrder="guid">
+      <wsdl:input name="GetFilterRequest" message="ns0:WebService.GetFilterInput" />
+      <wsdl:output name="GetFilterResponse" message="ns0:WebService.GetFilterOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilterDescriptors" parameterOrder="guid">
+      <wsdl:input name="GetFilterDescriptorsRequest" message="ns0:WebService.GetFilterDescriptorsInput" />
+      <wsdl:output name="GetFilterDescriptorsResponse" message="ns0:WebService.GetFilterDescriptorsOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilterDescriptors" parameterOrder="guid path module view">
+      <wsdl:input name="GetFilterDescriptors1Request" message="ns0:WebService.GetFilterDescriptors1Input" />
+      <wsdl:output name="GetFilterDescriptors1Response" message="ns0:WebService.GetFilterDescriptors1Output" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHierarchy" parameterOrder="guid">
+      <wsdl:input name="GetHierarchyRequest" message="ns0:WebService.GetHierarchyInput" />
+      <wsdl:output name="GetHierarchyResponse" message="ns0:WebService.GetHierarchyOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHierarchy" parameterOrder="sessionToken context mode module">
+      <wsdl:input name="GetHierarchy1Request" message="ns0:WebService.GetHierarchy1Input" />
+      <wsdl:output name="GetHierarchy1Response" message="ns0:WebService.GetHierarchy1Output" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatrix" parameterOrder="guid path">
+      <wsdl:input name="GetMatrixRequest" message="ns0:WebService.GetMatrixInput" />
+      <wsdl:output name="GetMatrixResponse" message="ns0:WebService.GetMatrixOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyDataRecord" parameterOrder="guid module reportingPointPath view">
+      <wsdl:input name="GetEmptyDataRecordRequest" message="ns0:WebService.GetEmptyDataRecordInput" />
+      <wsdl:output name="GetEmptyDataRecordResponse" message="ns0:WebService.GetEmptyDataRecordOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVariables" parameterOrder="guid variablesXml">
+      <wsdl:input name="GetVariablesRequest" message="ns0:WebService.GetVariablesInput" />
+      <wsdl:output name="GetVariablesResponse" message="ns0:WebService.GetVariablesOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="GetViews" parameterOrder="guid path">
+      <wsdl:input name="GetViewsRequest" message="ns0:WebService.GetViewsInput" />
+      <wsdl:output name="GetViewsResponse" message="ns0:WebService.GetViewsOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input name="LoginRequest" message="ns0:WebService.LoginInput" />
+      <wsdl:output name="LoginResponse" message="ns0:WebService.LoginOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="Login" parameterOrder="username password">
+      <wsdl:input name="Login1Request" message="ns0:WebService.Login1Input" />
+      <wsdl:output name="Login1Response" message="ns0:WebService.Login1Output" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout" parameterOrder="sessionToken">
+      <wsdl:input name="LogoutRequest" message="ns0:WebService.LogoutInput" />
+      <wsdl:output name="LogoutResponse" message="ns0:WebService.LogoutOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckPassword" parameterOrder="guid password">
+      <wsdl:input name="CheckPasswordRequest" message="ns0:WebService.CheckPasswordInput" />
+      <wsdl:output name="CheckPasswordResponse" message="ns0:WebService.CheckPasswordOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="RenewLease" parameterOrder="guid">
+      <wsdl:input name="RenewLeaseRequest" message="ns0:WebService.RenewLeaseInput" />
+      <wsdl:output name="RenewLeaseResponse" message="ns0:WebService.RenewLeaseOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitCalendar" parameterOrder="guid calendarXml">
+      <wsdl:input name="SubmitCalendarRequest" message="ns0:WebService.SubmitCalendarInput" />
+      <wsdl:output name="SubmitCalendarResponse" message="ns0:WebService.SubmitCalendarOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitDataRecord" parameterOrder="guid filterXml dataXml">
+      <wsdl:input name="SubmitDataRecordRequest" message="ns0:WebService.SubmitDataRecordInput" />
+      <wsdl:output name="SubmitDataRecordResponse" message="ns0:WebService.SubmitDataRecordOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitNewDataRecord" parameterOrder="guid reportingPointPath nameValueCollectionXml">
+      <wsdl:input name="SubmitNewDataRecordRequest" message="ns0:WebService.SubmitNewDataRecordInput" />
+      <wsdl:output name="SubmitNewDataRecordResponse" message="ns0:WebService.SubmitNewDataRecordOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVariables" parameterOrder="guid variablesXml">
+      <wsdl:input name="UpdateVariablesRequest" message="ns0:WebService.UpdateVariablesInput" />
+      <wsdl:output name="UpdateVariablesResponse" message="ns0:WebService.UpdateVariablesOutput" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVariables" parameterOrder="guid variablesXml force">
+      <wsdl:input name="UpdateVariables1Request" message="ns0:WebService.UpdateVariables1Input" />
+      <wsdl:output name="UpdateVariables1Response" message="ns0:WebService.UpdateVariables1Output" />
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate" parameterOrder="username password">
+      <wsdl:input name="AuthenticateRequest" message="ns0:WebService.AuthenticateInput" />
+      <wsdl:output name="AuthenticateResponse" message="ns0:WebService.AuthenticateOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceCorePortType">
+    <wsdl:operation name="About">
+      <wsdl:input name="AboutRequest" message="ns0:WebServiceCore.AboutInput" />
+      <wsdl:output name="AboutResponse" message="ns0:WebServiceCore.AboutOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebServiceBasePortType">
+    <wsdl:operation name="About">
+      <wsdl:input name="AboutRequest" message="ns0:WebServiceBase.AboutInput" />
+      <wsdl:output name="AboutResponse" message="ns0:WebServiceBase.AboutOutput" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceBinding" type="ns0:WebServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <suds:class type="ns0:WebService" extends="ns0:WebServiceCore" rootType="MarshalByRefObject">
+    </suds:class>
+    <wsdl:operation name="About">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#About" />
+      <suds:method attributes="public override" />
+      <wsdl:input name="AboutRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="AboutResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AvailableModules">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#AvailableModules" />
+      <suds:method attributes="public" />
+      <wsdl:input name="AvailableModulesRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="AvailableModulesResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAuditLog">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetAuditLog" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetAuditLogRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetAuditLogResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalendar">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetCalendar" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetCalendarRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetCalendarResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCauseLocations">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetCauseLocations" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetCauseLocationsRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetCauseLocationsResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetData" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetDataRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetDataResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetData" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetData1Request">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetData1Response">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetData" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetData2Request">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetData2Response">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataRecord">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetDataRecord" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetDataRecordRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetDataRecordResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFieldDescriptors">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetFieldDescriptors" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetFieldDescriptorsRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetFieldDescriptorsResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFieldDescriptors">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetFieldDescriptors" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetFieldDescriptors1Request">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetFieldDescriptors1Response">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilter">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetFilter" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetFilterRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetFilterResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilterDescriptors">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetFilterDescriptors" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetFilterDescriptorsRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetFilterDescriptorsResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilterDescriptors">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetFilterDescriptors" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetFilterDescriptors1Request">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetFilterDescriptors1Response">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHierarchy">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetHierarchy" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetHierarchyRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetHierarchyResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHierarchy">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetHierarchy" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetHierarchy1Request">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetHierarchy1Response">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatrix">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetMatrix" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetMatrixRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetMatrixResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmptyDataRecord">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetEmptyDataRecord" />
+      <suds:method attributes="public virtual" />
+      <wsdl:input name="GetEmptyDataRecordRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetEmptyDataRecordResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVariables">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetVariables" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetVariablesRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetVariablesResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetViews">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#GetViews" />
+      <suds:method attributes="public" />
+      <wsdl:input name="GetViewsRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="GetViewsResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#Login" />
+      <suds:method attributes="public" />
+      <wsdl:input name="LoginRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="LoginResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#Login" />
+      <suds:method attributes="public" />
+      <wsdl:input name="Login1Request">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="Login1Response">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#Logout" />
+      <suds:method attributes="public" />
+      <wsdl:input name="LogoutRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="LogoutResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckPassword">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#CheckPassword" />
+      <suds:method attributes="public" />
+      <wsdl:input name="CheckPasswordRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="CheckPasswordResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RenewLease">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#RenewLease" />
+      <suds:method attributes="public" />
+      <wsdl:input name="RenewLeaseRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="RenewLeaseResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitCalendar">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#SubmitCalendar" />
+      <suds:method attributes="public virtual" />
+      <wsdl:input name="SubmitCalendarRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="SubmitCalendarResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitDataRecord">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#SubmitDataRecord" />
+      <suds:method attributes="public virtual" />
+      <wsdl:input name="SubmitDataRecordRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="SubmitDataRecordResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitNewDataRecord">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#SubmitNewDataRecord" />
+      <suds:method attributes="public virtual" />
+      <wsdl:input name="SubmitNewDataRecordRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="SubmitNewDataRecordResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVariables">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#UpdateVariables" />
+      <suds:method attributes="public" />
+      <wsdl:input name="UpdateVariablesRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="UpdateVariablesResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVariables">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#UpdateVariables" />
+      <suds:method attributes="public" />
+      <wsdl:input name="UpdateVariables1Request">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="UpdateVariables1Response">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Authenticate">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server#Authenticate" />
+      <suds:method attributes="public" />
+      <wsdl:input name="AuthenticateRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="AuthenticateResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebService/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceCoreBinding" type="ns0:WebServiceCorePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <suds:class type="ns0:WebServiceCore" extends="ns0:WebServiceBase" rootType="MarshalByRefObject">
+    </suds:class>
+    <wsdl:operation name="About">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceCore/Citect.Ampla.General.Server#About" />
+      <suds:method attributes="public override" />
+      <wsdl:input name="AboutRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceCore/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="AboutResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceCore/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceBaseBinding" type="ns0:WebServiceBasePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
+    <suds:class type="ns0:WebServiceBase" rootType="MarshalByRefObject">
+    </suds:class>
+    <wsdl:operation name="About">
+      <soap:operation soapAction="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceBase/Citect.Ampla.General.Server#About" />
+      <suds:method attributes="public virtual" />
+      <wsdl:input name="AboutRequest">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceBase/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output name="AboutResponse">
+        <soap:body use="encoded" namespace="http://schemas.microsoft.com/clr/nsassem/Citect.Ampla.General.Server.WebServiceBase/Citect.Ampla.General.Server" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceService">
+    <wsdl:port name="WebServicePort" binding="ns0:WebServiceBinding">
+      <soap:address location="http://localhost:8888/b1/General" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceCorePort" binding="ns0:WebServiceCoreBinding">
+      <soap:address location="http://localhost:8888/b1/General" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceBasePort" binding="ns0:WebServiceBaseBinding">
+      <soap:address location="http://localhost:8888/b1/General" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

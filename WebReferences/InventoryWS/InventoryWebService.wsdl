@@ -1,0 +1,1991 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://www.citect.com/Ampla/Inventory/2010/03" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="InventoryWebService" targetNamespace="http://www.citect.com/Ampla/Inventory/2010/03" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.citect.com/Ampla/Inventory/2010/03">
+      <xsd:element name="AdjustLotQuantityRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:AdjustLotQuantityRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="AdjustLotQuantityRequest">
+        <xsd:sequence>
+          <xsd:element name="Adjustments" nillable="true" type="tns:LotQuantityAdjustments">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AdjustLotQuantityRequest" nillable="true" type="tns:AdjustLotQuantityRequest" />
+      <xsd:complexType name="LotQuantityAdjustments">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Adjustment" nillable="true" type="tns:LotQuantityAdjustment" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotQuantityAdjustments" nillable="true" type="tns:LotQuantityAdjustments" />
+      <xsd:complexType name="LotQuantityAdjustment">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Comment" nillable="true" type="xsd:string" />
+          <xsd:element name="Lot" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Method" type="tns:AdjustmentMethod" />
+          <xsd:element name="Quantity" type="xsd:double" />
+          <xsd:element minOccurs="0" name="WorkCenter" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="SampleDateTime" nillable="true" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotQuantityAdjustment" nillable="true" type="tns:LotQuantityAdjustment" />
+      <xsd:simpleType name="AdjustmentMethod">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Absolute" />
+          <xsd:enumeration value="Percentage" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="AdjustmentMethod" nillable="true" type="tns:AdjustmentMethod" />
+      <xsd:complexType name="Credentials">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Password" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Session" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Username" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Credentials" nillable="true" type="tns:Credentials" />
+      <xsd:element name="AdjustLotQuantityResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:AdjustLotQuantityResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="AdjustLotQuantityResponse">
+        <xsd:sequence>
+          <xsd:element name="Results" nillable="true" type="tns:AdjustLotQuantityResults">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AdjustLotQuantityResponse" nillable="true" type="tns:AdjustLotQuantityResponse" />
+      <xsd:complexType name="AdjustLotQuantityResults">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Result" nillable="true" type="tns:AdjustLotQuantityResult" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AdjustLotQuantityResults" nillable="true" type="tns:AdjustLotQuantityResults" />
+      <xsd:complexType name="AdjustLotQuantityResult">
+        <xsd:sequence>
+          <xsd:element name="Lot" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Quantity" type="xsd:double" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AdjustLotQuantityResult" nillable="true" type="tns:AdjustLotQuantityResult" />
+      <xsd:complexType name="SystemErrors">
+        <xsd:sequence>
+          <xsd:element name="Errors" nillable="true" type="tns:ArrayOfSystemError">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SystemErrors" nillable="true" type="tns:SystemErrors" />
+      <xsd:complexType name="ArrayOfSystemError">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="SystemError" nillable="true" type="tns:SystemError" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfSystemError" nillable="true" type="tns:ArrayOfSystemError" />
+      <xsd:complexType name="SystemError">
+        <xsd:sequence>
+          <xsd:element name="Code" type="tns:SystemErrorCode" />
+          <xsd:element name="Message" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="StackTrace" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="SystemError" nillable="true" type="tns:SystemError" />
+      <xsd:simpleType name="SystemErrorCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Database" />
+          <xsd:enumeration value="Network" />
+          <xsd:enumeration value="Unknown" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="SystemErrorCode" nillable="true" type="tns:SystemErrorCode" />
+      <xsd:complexType name="BusinessErrors">
+        <xsd:sequence>
+          <xsd:element name="Errors" nillable="true" type="tns:ArrayOfBusinessError">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="BusinessErrors" nillable="true" type="tns:BusinessErrors" />
+      <xsd:complexType name="ArrayOfBusinessError">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="BusinessError" nillable="true" type="tns:BusinessError" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ArrayOfBusinessError" nillable="true" type="tns:ArrayOfBusinessError" />
+      <xsd:complexType name="BusinessError">
+        <xsd:sequence>
+          <xsd:element name="Code" type="tns:BusinessErrorCode" />
+          <xsd:element name="Message" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="RecordIndex" nillable="true" type="xsd:long" />
+          <xsd:element minOccurs="0" name="StackTrace" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="BusinessError" nillable="true" type="tns:BusinessError" />
+      <xsd:simpleType name="BusinessErrorCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="InvalidRequest" />
+          <xsd:enumeration value="ConfigurationMismatch" />
+          <xsd:enumeration value="AccessDenied" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="BusinessErrorCode" nillable="true" type="tns:BusinessErrorCode" />
+      <xsd:element name="AdjustWorkCenterBalanceRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:AdjustWorkCenterBalanceRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="AdjustWorkCenterBalanceRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Comment" nillable="true" type="xsd:string" />
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Material" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Method" type="tns:AdjustmentMethod" />
+          <xsd:element name="Quantity" type="xsd:double" />
+          <xsd:element name="WorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SampleDateTime" nillable="true" type="xsd:dateTime" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AdjustWorkCenterBalanceRequest" nillable="true" type="tns:AdjustWorkCenterBalanceRequest" />
+      <xsd:element name="AdjustWorkCenterBalanceResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:AdjustWorkCenterBalanceResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="AdjustWorkCenterBalanceResponse">
+        <xsd:sequence>
+          <xsd:element name="Result" nillable="true" type="tns:AdjustWorkCenterBalanceResult">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AdjustWorkCenterBalanceResponse" nillable="true" type="tns:AdjustWorkCenterBalanceResponse" />
+      <xsd:complexType name="AdjustWorkCenterBalanceResult">
+        <xsd:sequence>
+          <xsd:element name="Balance" type="xsd:double" />
+          <xsd:element name="WorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AdjustWorkCenterBalanceResult" nillable="true" type="tns:AdjustWorkCenterBalanceResult" />
+      <xsd:element name="GetRelatedLotsFilterInformationRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:GetRelatedLotsFilterInformationRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetRelatedLotsFilterInformationRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Localization" nillable="true" type="tns:Localization">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetRelatedLotsFilterInformationRequest" nillable="true" type="tns:GetRelatedLotsFilterInformationRequest" />
+      <xsd:complexType name="Localization">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Language" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Localization" nillable="true" type="tns:Localization" />
+      <xsd:element name="GetRelatedLotsFilterInformationResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:GetRelatedLotsFilterInformationResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetRelatedLotsFilterInformationResponse">
+        <xsd:sequence>
+          <xsd:element name="Context" nillable="true" type="tns:GetRelatedLotsFilterInformationResponseContext">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ResultFilters" nillable="true" type="tns:FilterDetails">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="StartingFilters" nillable="true" type="tns:FilterDetails">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetRelatedLotsFilterInformationResponse" nillable="true" type="tns:GetRelatedLotsFilterInformationResponse" />
+      <xsd:complexType name="GetRelatedLotsFilterInformationResponseContext">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Localization" nillable="true" type="tns:Localization">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetRelatedLotsFilterInformationResponseContext" nillable="true" type="tns:GetRelatedLotsFilterInformationResponseContext" />
+      <xsd:complexType name="FilterDetails">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Filter" nillable="true" type="tns:FilterDetail" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FilterDetails" nillable="true" type="tns:FilterDetails" />
+      <xsd:complexType name="FilterDetail">
+        <xsd:sequence>
+          <xsd:element name="AllowedValues" nillable="true" type="tns:AllowedValues">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AssociatedModel" type="tns:AssociatedModelType" />
+          <xsd:element minOccurs="0" name="Category" nillable="true" type="xsd:string" />
+          <xsd:element name="ClrType" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DisplayOrder" type="xsd:long" />
+          <xsd:element name="LocalizedDisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SubCategory" nillable="true" type="xsd:string" />
+          <xsd:element name="UsageType" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FilterDetail" nillable="true" type="tns:FilterDetail" />
+      <xsd:complexType name="AllowedValues">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Value" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AllowedValues" nillable="true" type="tns:AllowedValues" />
+      <xsd:simpleType name="AssociatedModelType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="None" />
+          <xsd:enumeration value="Equipment" />
+          <xsd:enumeration value="Material" />
+          <xsd:enumeration value="Personnel" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="AssociatedModelType" nillable="true" type="tns:AssociatedModelType" />
+      <xsd:element name="GetRelatedLotsRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:GetRelatedLotsRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetRelatedLotsRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Localization" nillable="true" type="tns:Localization">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ResultFilters" nillable="true" type="tns:FilterValues">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="StartingFilters" nillable="true" type="tns:FilterValues">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetRelatedLotsRequest" nillable="true" type="tns:GetRelatedLotsRequest" />
+      <xsd:complexType name="FilterValues">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Value" nillable="true" type="tns:FilterValue" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FilterValues" nillable="true" type="tns:FilterValues" />
+      <xsd:complexType name="FilterValue">
+        <xsd:sequence>
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Value" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FilterValue" nillable="true" type="tns:FilterValue" />
+      <xsd:element name="GetRelatedLotsResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:GetRelatedLotsResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetRelatedLotsResponse">
+        <xsd:sequence>
+          <xsd:element name="Context" nillable="true" type="tns:GetRelatedLotsResponseContext">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="RowSets" nillable="true" type="tns:RowSets">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetRelatedLotsResponse" nillable="true" type="tns:GetRelatedLotsResponse" />
+      <xsd:complexType name="GetRelatedLotsResponseContext">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Localization" nillable="true" type="tns:Localization">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ResultFilters" nillable="true" type="tns:FilterValues">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="StartingFilters" nillable="true" type="tns:FilterValues">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetRelatedLotsResponseContext" nillable="true" type="tns:GetRelatedLotsResponseContext" />
+      <xsd:complexType name="RowSets">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="RowSet" nillable="true" type="tns:RowSet" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RowSets" nillable="true" type="tns:RowSets" />
+      <xsd:complexType name="RowSet">
+        <xsd:sequence>
+          <xsd:element name="Fields" nillable="true" type="tns:FieldDefinitions">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Rows" nillable="true" type="tns:Rows">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="RowSet" nillable="true" type="tns:RowSet" />
+      <xsd:complexType name="FieldDefinitions">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Field" nillable="true" type="tns:FieldDefinition" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FieldDefinitions" nillable="true" type="tns:FieldDefinitions" />
+      <xsd:complexType name="FieldDefinition">
+        <xsd:sequence>
+          <xsd:element name="CanShow" type="xsd:boolean" />
+          <xsd:element minOccurs="0" name="Category" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="ClrFormat" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ClrType" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DisplayOrder" type="xsd:long" />
+          <xsd:element name="LocalizedDisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SubCategory" nillable="true" type="xsd:string" />
+          <xsd:element name="Units" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="FieldDefinition" nillable="true" type="tns:FieldDefinition" />
+      <xsd:complexType name="Rows">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Row" nillable="true" type="tns:Row" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Rows" nillable="true" type="tns:Rows" />
+      <xsd:complexType name="Row">
+        <xsd:sequence>
+          <xsd:element name="Columns" nillable="true" type="tns:Columns">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Row" nillable="true" type="tns:Row" />
+      <xsd:complexType name="Columns">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Column" nillable="true" type="tns:Column" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Columns" nillable="true" type="tns:Columns" />
+      <xsd:complexType name="Column">
+        <xsd:sequence>
+          <xsd:element name="Field" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="IsValidForLocation" type="xsd:boolean" />
+          <xsd:element name="Value" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="Column" nillable="true" type="tns:Column" />
+      <xsd:element name="GetLotRelationshipGraphRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:GetLotRelationshipGraphRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetLotRelationshipGraphRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LotId" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetLotRelationshipGraphRequest" nillable="true" type="tns:GetLotRelationshipGraphRequest" />
+      <xsd:element name="GetLotRelationshipGraphResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:GetLotRelationshipGraphResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetLotRelationshipGraphResponse">
+        <xsd:sequence>
+          <xsd:element name="Context" nillable="true" type="tns:GetLotRelationshipGraphResponseContext">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Edges" nillable="true" type="tns:LotEdges">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Nodes" nillable="true" type="tns:LotNodes">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetLotRelationshipGraphResponse" nillable="true" type="tns:GetLotRelationshipGraphResponse" />
+      <xsd:complexType name="GetLotRelationshipGraphResponseContext">
+        <xsd:sequence>
+          <xsd:element name="LotId" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetLotRelationshipGraphResponseContext" nillable="true" type="tns:GetLotRelationshipGraphResponseContext" />
+      <xsd:complexType name="LotEdges">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Edge" nillable="true" type="tns:LotEdge" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotEdges" nillable="true" type="tns:LotEdges" />
+      <xsd:complexType name="LotEdge">
+        <xsd:sequence>
+          <xsd:element name="FromLotId" type="xsd:long" />
+          <xsd:element name="ToLotId" type="xsd:long" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotEdge" nillable="true" type="tns:LotEdge" />
+      <xsd:complexType name="LotNodes">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Node" nillable="true" type="tns:LotNode" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotNodes" nillable="true" type="tns:LotNodes" />
+      <xsd:complexType name="LotNode">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Lot" nillable="true" type="xsd:string" />
+          <xsd:element name="LotId" type="xsd:long" />
+          <xsd:element name="Material" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="WorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotNode" nillable="true" type="tns:LotNode" />
+      <xsd:element name="GetCurrentLotsRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:GetCurrentLotsRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetCurrentLotsRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Filter" nillable="true" type="tns:LotFilter">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetCurrentLotsRequest" nillable="true" type="tns:GetCurrentLotsRequest" />
+      <xsd:complexType name="LotFilter">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Lot" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Material" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="WorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotFilter" nillable="true" type="tns:LotFilter" />
+      <xsd:element name="GetCurrentLotsResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:GetCurrentLotsResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetCurrentLotsResponse">
+        <xsd:sequence>
+          <xsd:element name="Context" nillable="true" type="tns:GetCurrentLotsResponseContext">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LotDetails" nillable="true" type="tns:LotDetails">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetCurrentLotsResponse" nillable="true" type="tns:GetCurrentLotsResponse" />
+      <xsd:complexType name="GetCurrentLotsResponseContext">
+        <xsd:sequence>
+          <xsd:element name="Filter" nillable="true" type="tns:LotFilter">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetCurrentLotsResponseContext" nillable="true" type="tns:GetCurrentLotsResponseContext" />
+      <xsd:complexType name="LotDetails">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="LotDetail" nillable="true" type="tns:LotDetail" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotDetails" nillable="true" type="tns:LotDetails" />
+      <xsd:complexType name="LotDetail">
+        <xsd:sequence>
+          <xsd:element name="Lot" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LotId" type="xsd:long" />
+          <xsd:element name="Material" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Quantity" type="xsd:double" />
+          <xsd:element name="SampleDateTime" type="xsd:dateTime" />
+          <xsd:element name="Units" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="LotDetail" nillable="true" type="tns:LotDetail" />
+      <xsd:element name="MoveMaterialRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:MoveMaterialRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="MoveMaterialRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Submission" nillable="true" type="tns:MaterialMovementSubmission">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MoveMaterialRequest" nillable="true" type="tns:MoveMaterialRequest" />
+      <xsd:complexType name="MaterialMovementSubmission">
+        <xsd:sequence>
+          <xsd:element name="Comment" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DestinationDetail" nillable="true" type="tns:MaterialMovementDetail">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Direction" type="tns:MaterialMovementDirection" />
+          <xsd:element minOccurs="0" name="FieldValues" nillable="true" type="tns:MaterialMovementFieldValues">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaterialMovement" nillable="true" type="xsd:string" />
+          <xsd:element name="SampleDateTime" type="xsd:dateTime" />
+          <xsd:element name="SourceDetail" nillable="true" type="tns:MaterialMovementDetail">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementSubmission" nillable="true" type="tns:MaterialMovementSubmission" />
+      <xsd:complexType name="MaterialMovementDetail">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="Lot" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="LotId" nillable="true" type="xsd:long" />
+          <xsd:element minOccurs="0" name="Material" nillable="true" type="xsd:string" />
+          <xsd:element minOccurs="0" name="Quantity" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="WorkCenter" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementDetail" nillable="true" type="tns:MaterialMovementDetail" />
+      <xsd:simpleType name="MaterialMovementDirection">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Input" />
+          <xsd:enumeration value="Internal" />
+          <xsd:enumeration value="Output" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="MaterialMovementDirection" nillable="true" type="tns:MaterialMovementDirection" />
+      <xsd:complexType name="MaterialMovementFieldValues">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Value" nillable="true" type="tns:MaterialMovementFieldValue" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementFieldValues" nillable="true" type="tns:MaterialMovementFieldValues" />
+      <xsd:complexType name="MaterialMovementFieldValue">
+        <xsd:sequence>
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Value" nillable="true" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementFieldValue" nillable="true" type="tns:MaterialMovementFieldValue" />
+      <xsd:element name="MoveMaterialResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:MoveMaterialResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="MoveMaterialResponse">
+        <xsd:sequence />
+      </xsd:complexType>
+      <xsd:element name="MoveMaterialResponse" nillable="true" type="tns:MoveMaterialResponse" />
+      <xsd:element name="GetMaterialMovementHierarchyRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:GetMaterialMovementHierarchyRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetMaterialMovementHierarchyRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetMaterialMovementHierarchyRequest" nillable="true" type="tns:GetMaterialMovementHierarchyRequest" />
+      <xsd:element name="GetMaterialMovementHierarchyResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:GetMaterialMovementHierarchyResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetMaterialMovementHierarchyResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="RootFolder" nillable="true" type="tns:MaterialMovementFolder">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetMaterialMovementHierarchyResponse" nillable="true" type="tns:GetMaterialMovementHierarchyResponse" />
+      <xsd:complexType name="MaterialMovementFolder">
+        <xsd:sequence>
+          <xsd:element name="DisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Folders" nillable="true" type="tns:MaterialMovementFolders">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Items" nillable="true" type="tns:MaterialMovementItems">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementFolder" nillable="true" type="tns:MaterialMovementFolder" />
+      <xsd:complexType name="MaterialMovementFolders">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Folder" nillable="true" type="tns:MaterialMovementFolder" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementFolders" nillable="true" type="tns:MaterialMovementFolders" />
+      <xsd:complexType name="MaterialMovementItems">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Item" nillable="true" type="tns:MaterialMovementItem" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementItems" nillable="true" type="tns:MaterialMovementItems" />
+      <xsd:complexType name="MaterialMovementItem">
+        <xsd:sequence>
+          <xsd:element name="CustomFields" nillable="true" type="tns:MaterialMovementFields">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DestinationMaterial" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DestinationWorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Direction" type="tns:MaterialMovementDirection" />
+          <xsd:element name="DisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SourceMaterial" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SourceWorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DestinationLotIdentifierCreationMethod" type="tns:DestinationLotIdentifierCreationMethodType" />
+          <xsd:element name="DestinationQuantityMode" type="tns:DestinationQuantityMode" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementItem" nillable="true" type="tns:MaterialMovementItem" />
+      <xsd:complexType name="MaterialMovementFields">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Fields" nillable="true" type="tns:MaterialMovementField" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementFields" nillable="true" type="tns:MaterialMovementFields" />
+      <xsd:complexType name="MaterialMovementField">
+        <xsd:sequence>
+          <xsd:element name="AllowedValues" nillable="true" type="tns:AllowedValues">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="AssociatedModel" type="tns:AssociatedModelType" />
+          <xsd:element minOccurs="0" name="Category" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="ClrFormat" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="ClrType" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DisplayOrder" type="xsd:long" />
+          <xsd:element name="IsMandatory" type="xsd:boolean" />
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SubCategory" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Units" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Minimum" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="Maximum" nillable="true" type="xsd:double" />
+          <xsd:element minOccurs="0" name="HasAllowedValues" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="MaterialMovementField" nillable="true" type="tns:MaterialMovementField" />
+      <xsd:simpleType name="DestinationLotIdentifierCreationMethodType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="None" />
+          <xsd:enumeration value="UseSourceLotIdentifier" />
+          <xsd:enumeration value="UserProvided" />
+          <xsd:enumeration value="LotGenerator" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="DestinationLotIdentifierCreationMethodType" nillable="true" type="tns:DestinationLotIdentifierCreationMethodType" />
+      <xsd:simpleType name="DestinationQuantityMode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Expression" />
+          <xsd:enumeration value="Conversion" />
+          <xsd:enumeration value="UseSourceQuantity" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="DestinationQuantityMode" nillable="true" type="tns:DestinationQuantityMode" />
+      <xsd:element name="GetWorkCentersRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:GetWorkCentersRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetWorkCentersRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetWorkCentersRequest" nillable="true" type="tns:GetWorkCentersRequest" />
+      <xsd:element name="GetWorkCentersResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:GetWorkCentersResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetWorkCentersResponse">
+        <xsd:sequence>
+          <xsd:element name="WorkCenters" nillable="true" type="tns:WorkCenters">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetWorkCentersResponse" nillable="true" type="tns:GetWorkCentersResponse" />
+      <xsd:complexType name="WorkCenters">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="WorkCenter" nillable="true" type="tns:WorkCenter" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="WorkCenters" nillable="true" type="tns:WorkCenters" />
+      <xsd:complexType name="WorkCenter">
+        <xsd:sequence>
+          <xsd:element name="AllowedMaterials" nillable="true" type="tns:AllowedMaterials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LotBehavior" type="tns:LotBehavior" />
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="WorkCenterType" type="tns:WorkCenterType" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="WorkCenter" nillable="true" type="tns:WorkCenter" />
+      <xsd:complexType name="AllowedMaterials">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="Materials" nillable="true" type="tns:AllowedMaterial" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AllowedMaterials" nillable="true" type="tns:AllowedMaterials" />
+      <xsd:complexType name="AllowedMaterial">
+        <xsd:sequence>
+          <xsd:element name="DisplayName" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Name" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="Units" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="AllowedMaterial" nillable="true" type="tns:AllowedMaterial" />
+      <xsd:simpleType name="LotBehavior">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Mixed" />
+          <xsd:enumeration value="Selective" />
+          <xsd:enumeration value="Lifo" />
+          <xsd:enumeration value="Fifo" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="LotBehavior" nillable="true" type="tns:LotBehavior" />
+      <xsd:simpleType name="WorkCenterType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="Input" />
+          <xsd:enumeration value="Output" />
+          <xsd:enumeration value="ProcessCell" />
+          <xsd:enumeration value="ProductionLine" />
+          <xsd:enumeration value="ProductionUnit" />
+          <xsd:enumeration value="StorageZone" />
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:element name="WorkCenterType" nillable="true" type="tns:WorkCenterType" />
+      <xsd:element name="GetReportingPointAssociationsRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:GetReportingPointAssociationsRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetReportingPointAssociationsRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetReportingPointAssociationsRequest" nillable="true" type="tns:GetReportingPointAssociationsRequest" />
+      <xsd:element name="GetReportingPointAssociationsResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:GetReportingPointAssociationsResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GetReportingPointAssociationsResponse">
+        <xsd:sequence>
+          <xsd:element name="ReportingPointAssociations" nillable="true" type="tns:ReportingPointAssociations">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GetReportingPointAssociationsResponse" nillable="true" type="tns:GetReportingPointAssociationsResponse" />
+      <xsd:complexType name="ReportingPointAssociations">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" maxOccurs="unbounded" name="ReportingPointAssociation" nillable="true" type="tns:ReportingPointAssociation" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReportingPointAssociations" nillable="true" type="tns:ReportingPointAssociations" />
+      <xsd:complexType name="ReportingPointAssociation">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="LotReportingPoint" nillable="true" type="xsd:string" />
+          <xsd:element name="Material" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="MaterialQualityReportingPoint" nillable="true" type="xsd:string" />
+          <xsd:element name="WorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="ReportingPointAssociation" nillable="true" type="tns:ReportingPointAssociation" />
+      <xsd:element name="GenerateDestinationLotIdentifierRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:GenerateDestinationLotIdentifierRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GenerateDestinationLotIdentifierRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="MaterialMovement" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SampleDateTime" type="xsd:dateTime" />
+          <xsd:element name="DestinationMaterial" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="DestinationWorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SourceMaterial" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="SourceWorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element minOccurs="0" name="SourceLot" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GenerateDestinationLotIdentifierRequest" nillable="true" type="tns:GenerateDestinationLotIdentifierRequest" />
+      <xsd:element name="GenerateDestinationLotIdentifierResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:GenerateDestinationLotIdentifierResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="GenerateDestinationLotIdentifierResponse">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="DestinationLotIdentifier" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="GenerateDestinationLotIdentifierResponse" nillable="true" type="tns:GenerateDestinationLotIdentifierResponse" />
+      <xsd:element name="VerifyLotIdentifierRequestMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Request" nillable="true" type="tns:VerifyLotIdentifierRequest" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="VerifyLotIdentifierRequest">
+        <xsd:sequence>
+          <xsd:element name="Credentials" nillable="true" type="tns:Credentials">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="LotIdentifier" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="Material" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+          <xsd:element name="WorkCenter" nillable="true" type="xsd:string">
+            <xsd:annotation>
+              <xsd:appinfo>
+                <DefaultValue EmitDefaultValue="false" xmlns="http://schemas.microsoft.com/2003/10/Serialization/" />
+              </xsd:appinfo>
+            </xsd:annotation>
+          </xsd:element>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="VerifyLotIdentifierRequest" nillable="true" type="tns:VerifyLotIdentifierRequest" />
+      <xsd:element name="VerifyLotIdentifierResponseMessage">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element minOccurs="0" name="Response" nillable="true" type="tns:VerifyLotIdentifierResponse" />
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:complexType name="VerifyLotIdentifierResponse">
+        <xsd:sequence>
+          <xsd:element name="Result" type="xsd:boolean" />
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="VerifyLotIdentifierResponse" nillable="true" type="tns:VerifyLotIdentifierResponse" />
+    </xsd:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="AdjustLotQuantityRequestMessage">
+    <wsdl:part name="parameters" element="tns:AdjustLotQuantityRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="AdjustLotQuantityResponseMessage">
+    <wsdl:part name="parameters" element="tns:AdjustLotQuantityResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_AdjustLotQuantity_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_AdjustLotQuantity_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="AdjustWorkCenterBalanceRequestMessage">
+    <wsdl:part name="parameters" element="tns:AdjustWorkCenterBalanceRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="AdjustWorkCenterBalanceResponseMessage">
+    <wsdl:part name="parameters" element="tns:AdjustWorkCenterBalanceResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_AdjustWorkCenterBalance_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_AdjustWorkCenterBalance_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="GetRelatedLotsFilterInformationRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetRelatedLotsFilterInformationRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetRelatedLotsFilterInformationResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetRelatedLotsFilterInformationResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetRelatedLotsFilterInformation_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetRelatedLotsFilterInformation_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="GetRelatedLotsRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetRelatedLotsRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetRelatedLotsResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetRelatedLotsResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetRelatedLots_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetRelatedLots_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="GetLotRelationshipGraphRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetLotRelationshipGraphRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetLotRelationshipGraphResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetLotRelationshipGraphResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetLotRelationshipGraph_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetLotRelationshipGraph_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentLotsRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentLotsRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetCurrentLotsResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentLotsResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetCurrentLots_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetCurrentLots_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="MoveMaterialRequestMessage">
+    <wsdl:part name="parameters" element="tns:MoveMaterialRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="MoveMaterialResponseMessage">
+    <wsdl:part name="parameters" element="tns:MoveMaterialResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_MoveMaterial_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_MoveMaterial_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialMovementHierarchyRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetMaterialMovementHierarchyRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialMovementHierarchyResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetMaterialMovementHierarchyResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetMaterialMovementHierarchy_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetMaterialMovementHierarchy_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkCentersRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkCentersRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetWorkCentersResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkCentersResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetWorkCenters_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetWorkCenters_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="GetReportingPointAssociationsRequestMessage">
+    <wsdl:part name="parameters" element="tns:GetReportingPointAssociationsRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GetReportingPointAssociationsResponseMessage">
+    <wsdl:part name="parameters" element="tns:GetReportingPointAssociationsResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetReportingPointAssociations_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GetReportingPointAssociations_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="GenerateDestinationLotIdentifierRequestMessage">
+    <wsdl:part name="parameters" element="tns:GenerateDestinationLotIdentifierRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="GenerateDestinationLotIdentifierResponseMessage">
+    <wsdl:part name="parameters" element="tns:GenerateDestinationLotIdentifierResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GenerateDestinationLotIdentifier_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_GenerateDestinationLotIdentifier_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:message name="VerifyLotIdentifierRequestMessage">
+    <wsdl:part name="parameters" element="tns:VerifyLotIdentifierRequestMessage" />
+  </wsdl:message>
+  <wsdl:message name="VerifyLotIdentifierResponseMessage">
+    <wsdl:part name="parameters" element="tns:VerifyLotIdentifierResponseMessage" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_VerifyLotIdentifier_BusinessErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:BusinessErrors" />
+  </wsdl:message>
+  <wsdl:message name="IInventoryWebService_VerifyLotIdentifier_SystemErrors_FaultMessage">
+    <wsdl:part name="detail" element="tns:SystemErrors" />
+  </wsdl:message>
+  <wsdl:portType name="IInventoryWebService">
+    <wsdl:operation name="AdjustLotQuantity">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/AdjustLotQuantityIn" name="AdjustLotQuantityRequestMessage" message="tns:AdjustLotQuantityRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/AdjustLotQuantityOut" name="AdjustLotQuantityResponseMessage" message="tns:AdjustLotQuantityResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/AdjustLotQuantitySystemFault" name="SystemErrors" message="tns:IInventoryWebService_AdjustLotQuantity_SystemErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/AdjustLotQuantityBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_AdjustLotQuantity_BusinessErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWorkCenterBalance">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/AdjustWorkCenterBalanceIn" name="AdjustWorkCenterBalanceRequestMessage" message="tns:AdjustWorkCenterBalanceRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/AdjustWorkCenterBalanceOut" name="AdjustWorkCenterBalanceResponseMessage" message="tns:AdjustWorkCenterBalanceResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/AdjustWorkCenterBalanceBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_AdjustWorkCenterBalance_BusinessErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/AdjustWorkCenterBalanceSystemFault" name="SystemErrors" message="tns:IInventoryWebService_AdjustWorkCenterBalance_SystemErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelatedLotsFilterInformation">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsFilterInformationIn" name="GetRelatedLotsFilterInformationRequestMessage" message="tns:GetRelatedLotsFilterInformationRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsFilterInformationOut" name="GetRelatedLotsFilterInformationResponseMessage" message="tns:GetRelatedLotsFilterInformationResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsFilterInformationBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_GetRelatedLotsFilterInformation_BusinessErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsFilterInformationSystemFault" name="SystemErrors" message="tns:IInventoryWebService_GetRelatedLotsFilterInformation_SystemErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelatedLots">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsIn" name="GetRelatedLotsRequestMessage" message="tns:GetRelatedLotsRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsOut" name="GetRelatedLotsResponseMessage" message="tns:GetRelatedLotsResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsSystemFault" name="SystemErrors" message="tns:IInventoryWebService_GetRelatedLots_SystemErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_GetRelatedLots_BusinessErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLotRelationshipGraph">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetLotRelationshipGraphIn" name="GetLotRelationshipGraphRequestMessage" message="tns:GetLotRelationshipGraphRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetLotRelationshipGraphOut" name="GetLotRelationshipGraphResponseMessage" message="tns:GetLotRelationshipGraphResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetLotRelationshipGraphBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_GetLotRelationshipGraph_BusinessErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetLotRelationshipGraphSystemFault" name="SystemErrors" message="tns:IInventoryWebService_GetLotRelationshipGraph_SystemErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentLots">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetCurrentLotsIn" name="GetCurrentLotsRequestMessage" message="tns:GetCurrentLotsRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetCurrentLotsOut" name="GetCurrentLotsResponseMessage" message="tns:GetCurrentLotsResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetCurrentLotsBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_GetCurrentLots_BusinessErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetCurrentLotsSystemFault" name="SystemErrors" message="tns:IInventoryWebService_GetCurrentLots_SystemErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MoveMaterial">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/MoveMaterialIn" name="MoveMaterialRequestMessage" message="tns:MoveMaterialRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/MoveMaterialOut" name="MoveMaterialResponseMessage" message="tns:MoveMaterialResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/MoveMaterialSystemFault" name="SystemErrors" message="tns:IInventoryWebService_MoveMaterial_SystemErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/MoveMaterialBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_MoveMaterial_BusinessErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialMovementHierarchy">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetMaterialMovementHierarchyIn" name="GetMaterialMovementHierarchyRequestMessage" message="tns:GetMaterialMovementHierarchyRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetMaterialMovementHierarchyOut" name="GetMaterialMovementHierarchyResponseMessage" message="tns:GetMaterialMovementHierarchyResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetMaterialMovementHierarchyBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_GetMaterialMovementHierarchy_BusinessErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetMaterialMovementHierarchySystemFault" name="SystemErrors" message="tns:IInventoryWebService_GetMaterialMovementHierarchy_SystemErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenters">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetWorkCentersIn" name="GetWorkCentersRequestMessage" message="tns:GetWorkCentersRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetWorkCentersOut" name="GetWorkCentersResponseMessage" message="tns:GetWorkCentersResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetWorkCentersSystemFault" name="SystemErrors" message="tns:IInventoryWebService_GetWorkCenters_SystemErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetWorkCentersBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_GetWorkCenters_BusinessErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportingPointAssociations">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetReportingPointAssociationsIn" name="GetReportingPointAssociationsRequestMessage" message="tns:GetReportingPointAssociationsRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetReportingPointAssociationsOut" name="GetReportingPointAssociationsResponseMessage" message="tns:GetReportingPointAssociationsResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetReportingPointAssociationsBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_GetReportingPointAssociations_BusinessErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GetReportingPointAssociationsSystemFault" name="SystemErrors" message="tns:IInventoryWebService_GetReportingPointAssociations_SystemErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateDestinationLotIdentifier">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GenerateDestinationLotIdentifierIn" name="GenerateDestinationLotIdentifierRequestMessage" message="tns:GenerateDestinationLotIdentifierRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GenerateDestinationLotIdentifierOut" name="GenerateDestinationLotIdentifierResponseMessage" message="tns:GenerateDestinationLotIdentifierResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GenerateDestinationLotIdentifierBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_GenerateDestinationLotIdentifier_BusinessErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/GenerateDestinationLotIdentifierSystemFault" name="SystemErrors" message="tns:IInventoryWebService_GenerateDestinationLotIdentifier_SystemErrors_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifyLotIdentifier">
+      <wsdl:input wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/VerifyLotIdentifierIn" name="VerifyLotIdentifierRequestMessage" message="tns:VerifyLotIdentifierRequestMessage" />
+      <wsdl:output wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/VerifyLotIdentifierOut" name="VerifyLotIdentifierResponseMessage" message="tns:VerifyLotIdentifierResponseMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/VerifyLotIdentifierBusinessFault" name="BusinessErrors" message="tns:IInventoryWebService_VerifyLotIdentifier_BusinessErrors_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://www.citect.com/Ampla/Inventory/2010/03/VerifyLotIdentifierSystemFault" name="SystemErrors" message="tns:IInventoryWebService_VerifyLotIdentifier_SystemErrors_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IInventoryWebService" type="tns:IInventoryWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AdjustLotQuantity">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/AdjustLotQuantityIn" style="document" />
+      <wsdl:input name="AdjustLotQuantityRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AdjustLotQuantityResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AdjustWorkCenterBalance">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/AdjustWorkCenterBalanceIn" style="document" />
+      <wsdl:input name="AdjustWorkCenterBalanceRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="AdjustWorkCenterBalanceResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelatedLotsFilterInformation">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsFilterInformationIn" style="document" />
+      <wsdl:input name="GetRelatedLotsFilterInformationRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetRelatedLotsFilterInformationResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelatedLots">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/GetRelatedLotsIn" style="document" />
+      <wsdl:input name="GetRelatedLotsRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetRelatedLotsResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetLotRelationshipGraph">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/GetLotRelationshipGraphIn" style="document" />
+      <wsdl:input name="GetLotRelationshipGraphRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetLotRelationshipGraphResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentLots">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/GetCurrentLotsIn" style="document" />
+      <wsdl:input name="GetCurrentLotsRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCurrentLotsResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MoveMaterial">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/MoveMaterialIn" style="document" />
+      <wsdl:input name="MoveMaterialRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="MoveMaterialResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialMovementHierarchy">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/GetMaterialMovementHierarchyIn" style="document" />
+      <wsdl:input name="GetMaterialMovementHierarchyRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMaterialMovementHierarchyResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkCenters">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/GetWorkCentersIn" style="document" />
+      <wsdl:input name="GetWorkCentersRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetWorkCentersResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportingPointAssociations">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/GetReportingPointAssociationsIn" style="document" />
+      <wsdl:input name="GetReportingPointAssociationsRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetReportingPointAssociationsResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateDestinationLotIdentifier">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/GenerateDestinationLotIdentifierIn" style="document" />
+      <wsdl:input name="GenerateDestinationLotIdentifierRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GenerateDestinationLotIdentifierResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="VerifyLotIdentifier">
+      <soap:operation soapAction="http://www.citect.com/Ampla/Inventory/2010/03/VerifyLotIdentifierIn" style="document" />
+      <wsdl:input name="VerifyLotIdentifierRequestMessage">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="VerifyLotIdentifierResponseMessage">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessErrors">
+        <soap:fault use="literal" name="BusinessErrors" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="SystemErrors">
+        <soap:fault use="literal" name="SystemErrors" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InventoryWebService">
+    <wsdl:port name="BasicHttpBinding_IInventoryWebService" binding="tns:BasicHttpBinding_IInventoryWebService">
+      <soap:address location="http://AUCNCPSRV407:8889/Ampla/Inventory/2010/03/Soap11" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
